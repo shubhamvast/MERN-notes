@@ -1,0 +1,272 @@
+## install specific version:
+
+1. npm i package_name@version
+
+```bash
+npm i underscore@1.3.2
+```
+
+2. npm list to check all the packages in your project
+
+```bash
+npm list
+```
+
+install the mongoose version 5.11.14
+
+```bash
+npm i mongoose@5.11.14
+```
+
+to check whether the installed dependencie's versions are outdated or not
+
+```bash
+npm outdated
+```
+
+output
+
+```bash
+PS C:\Mudik Training\NodeJS\New folder (2)> npm outdated
+Package     Current   Wanted  Latest  Location                 Depended by
+mongoose    5.11.14  5.13.14   6.5.2  node_modules/mongoose    New folder (2)
+underscore    1.3.2   1.13.4  1.13.4  node_modules/underscore  New folder (2)
+
+```
+
+```bash
+npm update
+```
+
+#### to install the npm-check-updates so that it will check whether the latest versions of the packages are available or not
+
+-g : global flag
+
+```bash
+npm i -g npm-check-updates
+```
+
+#### ncu is a shortform for npm-check-updates
+
+-u : to update the packages to the latest available versions
+
+check the package.json file
+
+```javascript
+"dependencies": {
+    "mongoose": "^5.11.14",  // check version
+    "underscore": "^1.3.2"
+  }
+```
+
+```bash
+ncu -u
+```
+
+shortform for updating the version (major version) it will change only package.json and will not install the latest version of packages
+to install you can do npm i
+
+```bash
+npm list
+npm i
+```
+
+## devDependencies
+
+in production environment dev dependencies are not required.
+
+package.json file:
+
+```javascript
+{
+  "name": "npm-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.11.14",
+    "underscore": "^1.3.2"
+  }
+}
+
+```
+
+```bash
+npm i jshint --save-dev
+
+# OR
+
+npm i jshint -D
+```
+
+post this command our package.json will be:
+
+```javascript
+{
+  "name": "npm-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.11.14",
+    "underscore": "^1.3.2"
+  },
+
+  //  this is dev dependencies
+  "devDependencies": {
+    "jshint": "^2.13.5"
+  }
+}
+
+```
+
+set the node env to production to check whether package.json will install jshint or not with npm i command
+
+but before goto node modules folder and delete jshint that you installed earlier without removing it from package.json file
+
+then do this commands:
+
+```bash
+set NODE_ENV=production
+
+npm i
+
+```
+
+check whether your node_modules folder have jshint module folder or not?
+it should not be there as we have set the environment to production
+
+### to Uninstall the package
+
+npm un packagename
+
+```bash
+npm un mongoose
+```
+
+all the global packages are in this directory:
+
+```bash
+C:\Users\SidheshP\AppData\Roaming\npm
+
+```
+
+install nodemon package to global:
+nodemon: helps to keep running the project / server
+
+(as we were keep starting and stopping the server last time for the http package program) nodemon will do this for us.
+
+```bash
+npm i nodemon -g
+```
+
+## We are going to publish our package to npm repository:
+
+pair with another person
+
+<br />
+step 1. create new folder and name as :fresher222-yourname
+and write a addition of numbers function
+
+<br />
+
+```bash
+npm init -y
+```
+
+step 2: create index.js file and write this code:
+
+```javascript
+function addNumbers(a, b) {
+  return a + b;
+}
+module.exports.addNumbers = addNumbers;
+```
+
+this code will be written by another person:
+
+```javascript
+function multiplyNumbers(a, b) {
+  return a * b;
+}
+module.exports.multiplyNumbers = multiplyNumbers;
+```
+
+post that create account on npmjs.org
+
+open cmd in to this newly created application
+
+```bash
+npm login
+```
+
+type your username, password, email and otp
+
+once you get this message in cmd:
+
+```bash
+Logged in as username on https://registry.npmjs.org/.
+```
+
+to publish the package just type command:
+
+```bash
+npm publish
+```
+
+install the package in another folder/application
+then try to use it
+
+to update the package version (minor)
+
+```bash
+npm version minor
+```
+
+to update the package version (patch)
+
+```bash
+npm version patch
+```
+
+to update the package version (major)
+
+```bash
+npm version major
+```
+
+not add another feature in your package
+
+```javascript
+function subtractNumbers(a, b) {
+  return a - b;
+}
+module.exports.subtractNumbers = subtractNumbers;
+```
+
+go to cmd: type
+
+```bash
+npm version minor
+```
+
+this will update your package version to
+v1.1.0
+
+```bash
+npm publish
+```
+
+## find the link to 
