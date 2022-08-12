@@ -1,0 +1,10 @@
+custom / named modules
+core modules
+external 3rd part modules
+sync and async fs module methods
+event module : emitter.emit and emitter.on
+installing npm packages
+underscore and mongoose packages
+package.json
+node_modules
+versioning - semantic versioning

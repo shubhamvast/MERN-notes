@@ -1,0 +1,255 @@
+node.js
+
+# all variables are module private
+
+#every property is private import and export is must
+
+#module.exports.<name of propety >  = <local property>  named export
+	module.exports  = <local property>   default export
+#const logger = require("./logger")
+
+#module wrapper funtion 
+
+#core modules (os,fs,path)
+
+#sync and non-sync methods
+
+#in non-sync -> there is callback fuction which handles all the things 
+we should mange error and success areas
+
+#customization of event class extends the 
+
+#any instance of http is eventhandler
+
+
+#npm 
+
+>npm init 
+>npm init --yes
+>npm i underscore
+
+#undercore
+const _ = require("underscore");
+
+let output = _.pick({name:"shubham",age:44},function(value,key,object){
+    return _.isNumber(value);
+});
+console.log(output);
+
+#mongooose
+
+#version
+major.minor.patch
+
+^ ==> major must same
+~ ==> major and minor same
+
+> npm list 
+	list of all package 
+>npm view underscore
+	metadata of project
+>npm view underscore versions
+	show versions
+>npm view underscore dependancies
+	show dependancies
+>
+
+
+# npm  shell commonds
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm i underscore 1.3.2
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+npm ERR! code E404
+npm ERR! 404 
+npm ERR! 404  '1.3.2@*' is not in this registry.
+npm ERR! 404
+npm ERR! 404 Note that you can also install from a
+npm ERR! 404 tarball, folder, http url, or git url.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\ShubhamM\AppData\Local\npm-cache\_logs\2022-08-11T05_12_42_844Z-debug-0.log
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm i underscore@1.3.2
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+changed 1 package, and audited 30 packages in 792ms
+
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues, run:
+
+Run `npm audit` for details.
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm list
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+npm_demo@1.0.0 C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo
+├── mongoose@6.5.2
+└── underscore@1.3.2
+
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+Unknown command: "views"
+
+Did you mean this?
+    npm view # View registry info
+
+To see a list of supported npm commands, run:
+  npm help
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm view mongoose 
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+mongoose@6.5.2 | MIT | deps: 7 | versions: 738
+Mongoose MongoDB ODM
+https://mongoosejs.com
+
+keywords: mongodb, document, model, schema, database, odm, data, datastore, query, nosql, orm, db
+
+dist
+.tarball: https://registry.npmjs.org/mongoose/-/mongoose-6.5.2.tgz
+.shasum: 630ae67c4d2576635ba1f859b2840560b27b7775
+.integrity: sha512-3CFDrSLtK2qjM1pZeZpLTUyqPRkc11Iuh74ZrwS4IwEJ3K2PqGnmyPLw7ex4Kzu37ujIMp3MAuiBlUjfrcb6hw==
+.unpackedSize: 3.7 MB
+
+dependencies:
+bson: ^4.6.5   kareem: 2.4.1  mongodb: 4.8.1 mpath: 0.9.0   mquery: 4.0.3  ms: 2.1.3      sift: 16.0.0
+
+maintainers:
+- rauchg <rauchg@gmail.com>
+- tjholowaychuk <tj@vision-media.ca>
+- vkarpov15 <val@karpov.io>
+
+dist-tags:
+latest: 6.5.2    legacy: 5.13.14  next: 6.0.0-rc2  unstable: 3.9.7
+
+published yesterday by vkarpov15 <val@karpov.io>
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm i mongoose@5.11.14
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+npm WARN deprecated @types/bson@4.2.0: This is a stub types definition. bson provides its own type definitions, so you do not need this installed.
+
+added 21 packages, removed 13 packages, changed 12 packages, and audited 38 packages in 7s
+
+2 packages are looking for funding
+  run `npm fund` for details
+
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+  npm audit fix --force
+
+Run `npm audit` for details.
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm outdated
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+Package     Current   Wanted  Latest  Location                 Depended by
+mongoose    5.11.14  5.13.14   6.5.2  node_modules/mongoose    npm_demo
+underscore    1.3.2   1.13.4  1.13.4  node_modules/underscore  npm_demo
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm update
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+added 3 packages, removed 3 packages, changed 7 packages, and audited 38 packages in 4s
+
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm i -g npm-check-updates
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+added 280 packages, and audited 281 packages in 55s
+
+55 packages are looking for funding
+  run `npm fund` for details
+
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> ncu -u
+Upgrading C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo\package.json
+[====================] 2/2 100%
+
+ mongoose    ^5.11.14  →   ^6.5.2
+ underscore    ^1.3.2  →  ^1.13.4
+
+Run npm install to install new versions.
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+added 13 packages, removed 21 packages, changed 11 packages, and audited 30 packages in 2s
+
+4 packages are looking for funding
+
+found 0 vulnerabilities
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm list
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+npm_demo@1.0.0 C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo
+├── mongoose@6.5.2
+└── underscore@1.13.4
+
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm outdated
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> 
+
+
+#dev dependancy ==> in production dependancies nerver be installed
+
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm i jshint -D
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+added 31 packages, and audited 61 packages in 4s
+
+7 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> 
+
+#
+ "devDependencies": {
+    "jshint": "^2.13.5"
+  }
+
+##
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> set  NODE_ENV=production
+PS C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\npm_demo> npm i
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+added 1 package, and audited 61 packages in 2s
+
+7 packages are looking for funding
+  run `npm fund` for details
+
+#npm publication
+
+C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\fresher222-shubham>npm login
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+npm notice Log in on https://registry.npmjs.org/
+Username: shubhamvast
+Password:
+Email: (this IS public) porus1244@gmail.com
+npm notice Please check your email for a one-time password (OTP)
+Enter one-time password: 46071390
+Logged in as shubhamvast on https://registry.npmjs.org/.
+
+C:\Shubham Mangore\MERN\mern\MERN STACK\NodeJS\fresher222-shubham>npm publish
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+npm notice
+npm notice package: fresher222-shubham@1.0.0
+npm notice === Tarball Contents ===
+npm notice 89B  index.js
+npm notice 234B package.json
+npm notice === Tarball Details ===
+npm notice name:          fresher222-shubham
+npm notice version:       1.0.0
+npm notice filename:      fresher222-shubham-1.0.0.tgz
+npm notice package size:  346 B
+npm notice unpacked size: 323 B
+npm notice shasum:        84bf10b218c36c782c1d1f6f48bfa09ad0815531
+npm notice integrity:     sha512-tEzh/P2qYbVx5[...]8zcGpQ8cnaGJQ==
+npm notice total files:   2
+npm notice
+npm notice Publishing to https://registry.npmjs.org/
++ fresher222-shubham@1.0.0
+
