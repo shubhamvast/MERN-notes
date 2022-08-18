@@ -1,0 +1,15 @@
+body {
+}
+
+#link-1:hover {
+  color: red;
+}
+#link-2:active {
+  color: aqua;
+}
+#link-3:visited {
+  color: rgb(180, 206, 34);
+}
+#link-4:any-link {
+    color: coral;
+}

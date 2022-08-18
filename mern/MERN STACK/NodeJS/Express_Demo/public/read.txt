@@ -1,0 +1,4 @@
+hello india happy 
+
+// directily we can access file thorough it 
+// after base url just write name of file 

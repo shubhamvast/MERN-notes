@@ -1,0 +1,36 @@
+$primary-color: red;
+
+.container .primary-text{
+    $primary-color : blue !global;
+    color: $primary-color;
+}
+h1 {
+  color: $primary-color;
+  
+font: {
+    family: Helvetica, sans-serif;
+    size: 18px;
+    weight: bold;
+  }
+  
+}
+
+
+body{   
+    div{
+        p{
+            a{
+                color: green;
+               
+            }
+        }
+    }
+}
+@mixin hello-world($color){
+    color:$color;
+  
+  }
+  
+.btn{
+    @include hello-world(red);
+}

@@ -1,0 +1,61 @@
+@primary-color: rgb(255, 115, 0); //variables in less
+@secondary-color: rgb(51, 46, 47);
+@background-color: yellow;
+@margin : 120px+10px;
+
+body {
+  background-color: aliceblue;
+}
+
+.container {
+    margin: @margin 0;
+  background-color: lighten(@background-color,30%);
+}
+.primary-text {
+  color: @primary-color;
+}
+
+.secondary-text {
+  color: @secondary-color;
+}
+
+.bordered {
+  border-bottom: dotted 1px #000;
+  border-top: dotted 1px #000;
+  border-width: 10px;
+}
+.redtext {
+  color: rgb(83, 221, 19);
+}
+
+h1 {
+  .bordered; //mixins  is used we mix the rules here
+  .redtext;
+}
+
+.roundedborder(@radius) {
+  border-radius: @radius;
+}
+
+.btn:extend(.patent-btn) {
+  width: 100px;
+  height: 30px;
+  color: @primary-color;
+  .roundedborder(10px);
+}
+
+.patent-btn {
+  background-color: aquamarine;
+}
+.u {
+    list-style: none;
+    li{
+        padding: 10 0;
+        a{
+            text-decoration: none;
+            &:hover{
+                color: red;
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My blog</title>
+    <script src="blog.js"></script>
+  </head>
+  <body>
+    <h1>My blog</h1>
+    <div id="entry1">
+      <h2>Great day bird watching</h2>
+      <p>Today I saw three ducks! I named them Huey, Louie, and Dewey.</p>
+      <p>I took a couple of photos...</p>
+    </div>
+
+    <script>
+      console.log(document.documentElement);
+
+      console.log(document.head);
+
+      const hchild1 = document.head.children[0];
+      console.log(hchild1);
+
+      const hchild2 = document.head.children[1];
+      console.log(hchild2);
+
+      const hchild3 = document.head.children[2];
+      console.log(hchild3);
+
+      console.log(document.body);
+
+      const bchild1 = document.body.children[0];
+      console.log(bchild1);
+
+      const bchild2 = document.body.children[1];
+      console.log(bchild2);
+
+      const bchild3 = document.body.children[2];
+      console.log(bchild3);
+    </script>
+  </body>
+</html>

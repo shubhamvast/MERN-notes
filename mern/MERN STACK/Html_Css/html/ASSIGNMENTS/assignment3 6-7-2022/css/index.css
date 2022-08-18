@@ -1,0 +1,133 @@
+body {
+  background-color: aliceblue;
+}
+
+.logo {
+  display: inline;
+  transition: 0.5s;
+}
+.logo:hover {
+  transform: scale(1.01);
+}
+h1 {
+  display: inline;
+  color: blueviolet;
+
+  font-size: 65px;
+  font-family: cursive;
+  border-bottom: 2px red solid;
+}
+.logo h1:hover {
+  margin-top: -5px;
+}
+.logo img:hover {
+  margin-top: -10px;
+  font-size: larger;
+}
+
+.lead {
+  border: 2px yellowgreen solid;
+  width: 70%;
+  border-radius: 10px;
+  height: 150px;
+  margin-left: 140px;
+  margin-top: 50px;
+  font-size: x-large;
+  padding-top: 20px;
+}
+.lead:hover {
+  background-color: lightyellow;
+}
+
+#special-offer {
+  border: thick red solid;
+  border-radius: 10px;
+  width: 95%;
+  height: 350px;
+  margin: 20px auto;
+}
+#special-offer h2 {
+  margin-top: 20px;
+  padding-left: 20px;
+  /* text-align: center; */
+  font-size: 40px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: rgb(35, 166, 175);
+  /* border: 1px rgb(10, 170, 135) solid; */
+  width: auto;
+  margin: 10px auto;
+}
+#special-offer #div1 pre {
+  width: auto;
+}
+
+#special-offer #div1 {
+  height: 100%;
+  width: 60%;
+  border: 1px rgb(25, 19, 97) solid;
+  border-radius: 10px;
+  background-color: aqua;
+}
+#special-offer #div2 {
+  height: 100%;
+  width: 40%;
+  border: 1px green solid;
+  border-radius: 10px;
+  /* background-color: blueviolet; */
+  display: flex;
+  flex-direction: column;
+}
+#div1 pre {
+  width: auto;
+  font-size: xx-large;
+}
+#div2 img {
+  margin: 0 auto;
+  border: 1px red solid;
+  border-radius: 70%;
+  animation: sidhesh 3s infinite;
+
+  /* background-color: black; */
+}
+#offer-row {
+  /* border: 1px darkgoldenrod solid;
+     */
+  border-top: 1px red solid;
+  display: flex;
+  height: 80%;
+}
+@keyframes sidhesh {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#sidebar {
+  /* border: 1px blueviolet solid; */
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+  height: 150px;
+}
+.widget {
+  border: 1px yellow solid;
+  /* margin-left: 50px; */
+  border-radius: 10px;
+  text-align: center;
+  background-color: rgb(143, 155, 155);
+}
+#d1 {
+  width: 25%;
+  
+}
+#d1 li{
+  list-style: none;
+
+}
+#d3 {
+  width: 25%;
+}
+#d1 {
+}

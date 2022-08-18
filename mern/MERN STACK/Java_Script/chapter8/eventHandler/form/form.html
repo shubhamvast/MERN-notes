@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <script src="form.js" defer></script>
+    <link rel="stylesheet" href="form.css" />
+  </head>
+  <body>
+    <h1>CONFORMATION FORM</h1>
+    <form action="#" id="form" method="post">
+      <label for="name">Name</label>
+      <input type="text" id="name"/>
+      <label for="email">Email</label>
+      <input type="email" id="email" />
+      <label for="password">Password</label>
+      <input type="password" id="password" />
+      <label>Gender</label>
+      <div id="gen">
+        <div>
+          <label>Male</label>
+          <input type="radio" name="gender" id="male" />
+        </div>
+        <div>
+          <label>Female</label>
+          <input type="radio" name="gender" id="female" />
+        </div>
+      </div>
+      <label>Job Role</label>
+      <select name="jobRole" id="jobRole">
+        <option value="MERN">MERN</option>
+        <option value="JAVA">JAVA</option>
+        <option value="DEVOPS">DEVOPS</option>
+        <option value="SALES">SALES</option>
+      </select>
+      <input type="submit" placeholder="SUBMIT" />
+      <input type="reset" placeholder="RESET" />
+    </form>
+  </body>
+</html>

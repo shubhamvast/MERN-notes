@@ -1,0 +1,22 @@
+.background-example{
+    width: 90%;
+    height: 500px;
+    border: 1px red solid;
+    margin-top: 10px;
+}
+
+#background-1{
+    background-image:url(../images/background2.jpeg);
+}
+#background-2{
+    background-color: aqua;
+}
+#background-3{
+    background-image: url(../images/background3.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+#background-4{
+    background-image: url(../images/background4.jpeg);
+    background-repeat: repeat-x;
+}

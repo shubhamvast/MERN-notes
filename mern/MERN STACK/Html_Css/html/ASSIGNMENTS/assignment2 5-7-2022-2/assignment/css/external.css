@@ -1,0 +1,29 @@
+h1 {
+  color: red;
+  font-family: cursive;
+}
+
+p {
+  background-color: cadetblue;
+  height: 40px;
+  font-size: 25px;
+}
+
+h2 {
+  color: yellow;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    background-color: purple;
+}
+
+ol{
+    background-color:brown;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: aquamarine;
+    height: 150px;
+    font-size: larger;
+}
+ol li{
+    margin: 25px auto;
+    background-color:red;
+}

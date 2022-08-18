@@ -1,0 +1,59 @@
+/* group selectors body {
+  background-color: rgb(186, 199, 73);
+}
+div {
+  margin-top: 10px;
+  border: 1px red solid;
+}
+p {
+  background-color: blueviolet;
+  color: chartreuse;
+  font-size: larger;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+} */
+
+.lead {
+  color: blueviolet;
+  font-size: larger;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.blog-post {
+  background-color: rgb(101, 202, 61);
+  font-size: large;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 100;
+  color:blue;
+}
+.blog-post h2 {
+  color: rgb(146, 59, 132);
+}
+
+em{
+    color: rgb(41, 36, 30);
+}
+strong{
+    color: blueviolet;
+}
+
+#container{
+   
+}
+#header{
+    color: rgb(197, 117, 12);
+}
+#container #header .lead{
+ font-weight:bolder;
+ font-size: 1.2rem;
+}
+#footer{
+    background-color: rgb(233, 217, 233);
+    color: rgb(240, 15, 15);
+}
+
+#footer p{
+    color: rgb(28, 109, 184);
+}
+ /* #container #header h1 {
+  color: brown;
+} */

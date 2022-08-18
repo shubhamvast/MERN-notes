@@ -1,0 +1,28 @@
+#how js works
+
+#Execution Content :  everything is happend in execution context , its like container 
+
+loops
+if-else
+else if
+
+alert - get popup
+
+console - use for debugging
+
+ways to communicate with users
+screen 
+alerts
+console
+dom - document object
+
+how we configure js file in html page
+
+inside head tag
+inside body tag by <script> tag
+
+insid head tag by adding file in head tag
+insid body tag by adding file in head tag
+
+
+ 

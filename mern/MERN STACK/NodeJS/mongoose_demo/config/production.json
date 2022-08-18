@@ -1,0 +1,8 @@
+{
+  "Database": {
+    "url": "PRODUCTION-URL"
+  },
+  "mail": {
+    "name": "production-server"
+  }
+}

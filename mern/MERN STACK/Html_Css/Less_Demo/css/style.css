@@ -1,0 +1,49 @@
+body {
+  background-color: aliceblue;
+}
+.container {
+  margin: 130px 0;
+  background-color: #ffff99;
+}
+.primary-text {
+  color: #ff7300;
+}
+.secondary-text {
+  color: #332e2f;
+}
+.bordered {
+  border-bottom: dotted 1px #000;
+  border-top: dotted 1px #000;
+  border-width: 10px;
+}
+.redtext {
+  color: #53dd13;
+}
+h1 {
+  border-bottom: dotted 1px #000;
+  border-top: dotted 1px #000;
+  border-width: 10px;
+  color: #53dd13;
+}
+.btn {
+  width: 100px;
+  height: 30px;
+  color: #ff7300;
+  border-radius: 10px;
+}
+.patent-btn,
+.btn {
+  background-color: aquamarine;
+}
+.u {
+  list-style: none;
+}
+.u li {
+  padding: 10 0;
+}
+.u li a {
+  text-decoration: none;
+}
+.u li a:hover {
+  color: red;
+}

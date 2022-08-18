@@ -1,0 +1,20 @@
+/* p{
+  point 1
+}
+p em{
+    point 2
+}
+
+div #container p.para{
+  point 112
+}
+
+#container p.para{
+
+    point 111
+
+} */
+
+/* p em{
+    color: red!important;   it will have heighst preferance than id selector
+} */

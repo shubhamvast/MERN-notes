@@ -1,0 +1,28 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbar {
+  background-color: rgb(202, 153, 194);
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container{
+    border: 1px blueviolet solid;
+    width: 50%;
+  
+}
+img{
+    width: 100%;
+    
+}
+.navbar div{
+  
+display: flex;
+justify-content: center;
+}

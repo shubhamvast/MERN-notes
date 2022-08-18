@@ -1,0 +1,14 @@
+.container .primary-text {
+  color: blue;
+}
+
+h1 {
+  color: blue;
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+body div p a {
+  color: green;
+}/*# sourceMappingURL=style.css.map */
