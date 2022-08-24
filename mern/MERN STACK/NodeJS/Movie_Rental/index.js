@@ -11,6 +11,16 @@ const Joi = require("joi");
 // reuest.body  we can access otherwise it shown undefine
 app.use(express.json());
 
+const morgan = require("morgan");
+
+app.use(morgan("tiny"));
+
+require("dotenv").config();
+
+const config = require("config");
+
+console.log(config.get("password"));
+
 const genres = [
   { id: 1, name: "action" },
   { id: 2, name: "horror" },
@@ -80,12 +90,12 @@ app.delete("/api/genres/:id", (req, res) => {
   res.status(200).send(genre);
 });
 
-function isFind(req,res) {
-  const genre = genres.find((ele)=>{
-   return ele.id === +req.params.id;
-  })
+function isFind(req, res) {
+  const genre = genres.find((ele) => {
+    return ele.id === +req.params.id;
+  });
 
-  if(!genre) res.status(404).send("not found....");
+  if (!genre) res.status(404).send("not found....");
 
   return genre;
 }

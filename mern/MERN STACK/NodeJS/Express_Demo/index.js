@@ -27,7 +27,9 @@ app.get("/api/courses", (req, res) => {
 
 app.get("/api/courses/:id/:empId", (req, res) => {
   console.log(req.params);
-  res.send(req.params.id);
+  // res.send(req.params.id);
+  res.send(req.query);
+
   //http://localhost:3000/api/courses/1
   //http://localhost:3000/api/courses/1/101   ==>   // more than one id
 

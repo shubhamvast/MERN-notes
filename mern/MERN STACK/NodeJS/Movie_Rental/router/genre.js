@@ -2,56 +2,28 @@ const express = require("express");
 const router = express.Router();
 router.use(express.json());
 
-
-const { default: mongoose } = require("mongoose");
-
-// const {schema} = mongoose;
-const genreSchema = new mongoose.Schema({
-  name: String,
-});
-
-const Genre = mongoose.model("genre", genreSchema);
+//imported from models/genreModel.js
+const {
+  Genre,
+  validateGenre,
+  printMongooseValidationError,
+} = require("../models/genreModel");
 
 // CURD operation
 
-//create
-router.post("/", async (req, res) => {
-  validateName(req, res);
-  const genre = new Genre({
-    name: req.body.name,
-  });
-  try {
-    await genre.save();
-    res.status(200).send(genre);
-  } catch (err) {
-    res.status(400).send("genre not posted");
-  }
-});
-
-//update
-router.put("/:id", async (req, res) => {
-  try {
-    validateName(req, res);
-    const genre = await Genre.findByIdAndUpdate(req.params.id, {
-      $set: { name: req.body.name },
-    });
-    res.status(200).send(genre);
-  } catch (err) {
-    res.status(400).send("genre not updated....");
-  }
-});
-
 //read whole collection
 router.get("/", async (req, res) => {
-  // const courses = await Course.find({}).skip(2);
   try {
     const genres = await Genre.find({});
 
-    if (!genres) res.status(404).send("genres are not there..");
+    if (genres.length == 0) {
+      res.status(404).send("genres not found");
+      return;
+    }
 
     res.status(200).send(genres);
   } catch (err) {
-    console.log("error in getting elemets...");
+    console.log(err);
   }
 });
 
@@ -60,38 +32,85 @@ router.get("/:id", async (req, res) => {
   try {
     const genre = await Genre.findById(req.params.id);
 
-    if (!genre) res.status(404).send("not found....");
-
+    if (!genre) {
+      res.status(404).send("genre with given id not found....");
+      return;
+    }
     res.status(200).send(genre);
   } catch (err) {
-    console.log("genre not fetched by id");
+    res.status(400).send(err);
   }
 });
 
+//create
+router.post("/", async (req, res) => {
+  try {
+    let { error } = validateGenre(req.body);
+    if (error) {
+      res.status(400).send(error.details[0].message);
+      return;
+    }
+    const genre = new Genre({
+      name: req.body.name,
+    });
+    await genre.save();
+    res.status(200).send(genre);
+  } catch (err) {
+    // console.log(err);
+    const errmsg = printMongooseValidationError(err);
+    if (errmsg) res.status(400).send(errmsg);
+    else {
+      console.log(err);
+      res.status(400).send("internal error other than mongoose validation check console..");
+    }
+
+  }
+});
+
+//update
+router.put("/:id", async (req, res) => {
+  try {
+    let { error } = validateGenre(req.body);
+    if (error) {
+      res.status(400).send(error.details[0].message);
+      return;
+    }
+    const genre = await Genre.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: { name: req.body.name },
+      },
+      {
+        new: true,
+        runvalidators: true,
+      }
+    );
+    if (!genre) res.status(404).send("genre with given id not found");
+    res.status(200).send(genre);
+  } catch (err) {
+    // console.log(err);
+    const errmsg = printMongooseValidationError(err);
+    if (errmsg) res.status(400).send(errmsg);
+    else {
+      console.log(err);
+      res.status(400).send("internal error other than mongoose validation check console..");
+    }
+
+  }
+});
 //delete specific item
 router.delete("/:id", async (req, res) => {
   try {
     const genre = await Genre.findById(req.params.id);
-    await Genre.deleteOne({ _id: req.params.id });
+     await Genre.deleteOne({ _id: req.params.id });
+     if (!genre) {
+      res.status(404).send("Movie not found with specific to delete....");
+      return;
+    }
     res.status(200).send(genre);
   } catch (err) {
-    res.status(400).send("internal server error while deleting..");
-    // res.status(400).send(err)
+    res.status(400).send(err)
   }
 });
-
-// import npm joi module for validation
-const Joi = require("joi");
-function validateName(req, res) {
-  const schema = Joi.object({
-    name: Joi.string().min(3).max(30).required(),
-  });
-
-  const { error } = schema.validate(req.body);
-  //   console.log(error);
-  if (error) {
-    return res.status(400).send(error.details[0].message);
-  }
-}
 
 module.exports = router;

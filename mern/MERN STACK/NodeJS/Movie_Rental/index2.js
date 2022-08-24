@@ -2,14 +2,13 @@
 const express = require("express");
 const app = express();
 
-//to make validatation
-//to set schema structure
-const Joi = require("joi");
-
 //return middleware function
 //so we can access json objects sent from postman
 // reuest.body  we can access otherwise it shown undefine
 app.use(express.json());
+
+require("dotenv").config();
+
 
 const database = require("./database/database_connection");
 database.databaseConnection();
@@ -21,6 +20,10 @@ app.use("/api/genres/", genreRouter);
 //import customer router
 const customerRouter = require("./router/customer");
 app.use("/api/customers/", customerRouter);
+
+//import movie router
+const movieRouter = require("./router/movie");
+app.use("/api/movies/", movieRouter);
 
 //TO set PORT enviornmental variable
 //so we can set PORT dynamically

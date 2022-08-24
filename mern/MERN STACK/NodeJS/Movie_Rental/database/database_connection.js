@@ -1,10 +1,14 @@
+
+const config = require("config");
+
 const mongoose = require("mongoose");
 
 async function databaseConnection() {
   try {
-    await mongoose.connect("mongodb://localhost/Movie_Rental");
+    await mongoose.connect(config.get("url"));
     console.log("connected to database....");
   } catch (err) {
+    console.log(err);
     console.log("not connected to database...");
   }
 }

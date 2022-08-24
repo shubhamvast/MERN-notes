@@ -11,6 +11,7 @@ async function connectionToDatabase() {
     console.log("not connected to database....");
   }
 }
+
 connectionToDatabase();
 
 const courseSchema = new mongoose.Schema({

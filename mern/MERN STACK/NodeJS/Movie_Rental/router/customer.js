@@ -4,60 +4,103 @@ const express = require("express");
 const router = express.Router();
 router.use(express.json());
 
-const mongoose = require("mongoose");
-const customerSchema = new mongoose.Schema({
-  name: String,
-  phone: String,
-  isGold: Boolean,
-});
-const Customer = mongoose.model("customer", customerSchema);
+const {
+  Customer,
+  validateCustomer,
+  printMongooseValidationError,
+} = require("../models/customerModel");
 
 router.get("/", async (req, res) => {
   try {
     const customers = await Customer.find({});
+    if (!customers) {
+      res.status(400).send("customers not in database...");
+      return;
+    }
     res.status(200).send(customers);
   } catch (err) {
-    res.status(400).send("error in fetching customets...");
+    res.status(400).send(err);
   }
 });
 
 router.get("/:id", async (req, res) => {
   try {
     const customer = await Customer.findById(req.params.id);
+    if (!customer) {
+      res.status(400).send("customer not in database with specific id...");
+      return;
+    }
     res.status(200).send(customer);
   } catch (err) {
-    res.status(400).send("error in fetching data...");
+    res.status(400).send(err);
   }
 });
 
 router.post("/", async (req, res) => {
   try {
-    validateCustomer(req, res);
+    let { error } = validateCustomer(req.body);
+    if (error) {
+      res.status(400).send(error.details[0].message);
+      return;
+    }
     const customer = new Customer({
       name: req.body.name,
+      category: req.body.category,
       phone: req.body.phone,
       isGold: req.body.isGold,
     });
     await customer.save();
     res.status(200).send(customer);
   } catch (err) {
-    res.status(400).send("cutomer not posted....");
+    // console.log(err);
+    const errmsg = printMongooseValidationError(err);
+    if (errmsg) res.status(400).send(errmsg);
+    else {
+      console.log(err);
+      res
+        .status(400)
+        .send("internal error other than mongoose validation check console..");
+    }
   }
 });
 
 router.put("/:id", async (req, res) => {
   try {
-    validateCustomer(req, res);
-    const customer = await Customer.findByIdAndUpdate(req.params.id, {
-      $set: {
-        name: req.body.name,
-        phone: req.body.phone,
-        isGold: req.body.isGold,
+    let { error } = validateCustomer(req.body);
+    if (error) {
+      res.status(400).send(error.details[0].message);
+      return;
+    }
+    const customer = await Customer.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: {
+          name: req.body.name,
+          category: req.body.category,
+          phone: req.body.phone,
+          isGold: req.body.isGold,
+        },
       },
-    });
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    if (!customer) {
+      res.status(400).send("customer with specific id not found");
+      return;
+    }
+
     res.status(200).send(customer);
   } catch (err) {
-    res.status(400).send("cutomer not updated....");
+    const errmsg = printMongooseValidationError(err);
+    if (errmsg) res.status(400).send(errmsg);
+    else {
+      console.log(err);
+      res
+        .status(400)
+        .send("internal error other than mongoose validation check console..");
+    }
   }
 });
 
@@ -65,24 +108,10 @@ router.delete("/:id", async (req, res) => {
   try {
     const customer = await Customer.findById(req.params.id);
     const result = await Customer.deleteOne({ _id: req.params.id });
-    if (!result) res.status(200).send(customer);
-    else res.status(200).send("element not found.....");
+    if (result.deletedCount == 0) res.status(200).send("element not found with specific id.....");
+    else res.status(200).send(customer);
   } catch (err) {
-    res.status(400).send("cutomer not delted....");
+    res.status(400).send(err);
   }
 });
-
-//import npm joi module for validation
-const Joi = require("joi");
-function validateCustomer(req, res) {
-  const schema = Joi.object({
-    name: Joi.string().min(3).max(30).required(),
-    phone: Joi.string().min(10).max(10).required(),
-    isGold: Joi.boolean().required(),
-  });
-
-  const { error } = schema.validate(req.body);
-  if (error) res.status(400).send(error.details[0].message);
-}
-
 module.exports = router;
