@@ -59,4 +59,5 @@ module.exports = {
   Movie,
   validateMovie,
   printMongooseValidationError,
+  movieSchema
 };

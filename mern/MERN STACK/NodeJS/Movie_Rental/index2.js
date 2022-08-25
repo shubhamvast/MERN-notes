@@ -9,7 +9,6 @@ app.use(express.json());
 
 require("dotenv").config();
 
-
 const database = require("./database/database_connection");
 database.databaseConnection();
 
@@ -24,6 +23,14 @@ app.use("/api/customers/", customerRouter);
 //import movie router
 const movieRouter = require("./router/movie");
 app.use("/api/movies/", movieRouter);
+
+//import rental router
+const rentalRouter = require("./router/rental");
+app.use("/api/rentals/", rentalRouter);
+
+//import user router
+const userRouter = require("./router/user");
+app.use("/api/users/", userRouter);
 
 //TO set PORT enviornmental variable
 //so we can set PORT dynamically
