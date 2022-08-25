@@ -24,11 +24,12 @@ const rentalSchema = new mongoose.Schema({
 const Rental = mongoose.model("rental", rentalSchema);
 
 const Joi = require("joi");
+Joi.objectId = require("joi-objectid")(Joi);
 
 function validateRental(rental) {
   const joiSchema = Joi.object({
-    customerId: Joi.string().required(),
-    movieId: Joi.string().required(),
+    customerId: Joi.objectId(),
+    movieId: Joi.objectId(),
   });
 
   return joiSchema.validate(rental);

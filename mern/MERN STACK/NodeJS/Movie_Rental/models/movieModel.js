@@ -35,10 +35,12 @@ const movieSchema = new mongoose.Schema({
 const Movie = mongoose.model("movie", movieSchema);
 
 const Joi = require("joi");
+Joi.objectId = require("joi-objectid")(Joi);
+
 function validateMovie(movie) {
   const schema = Joi.object({
     title: Joi.string().min(5).max(50).required(),
-    genreId: Joi.string().required(),
+    genreId: Joi.objectId(),
     dailyRentalRate: Joi.number().min(0).max(255).required(),
     numberInStock: Joi.number().min(0).max(255).required(),
     liked: Joi.boolean(),
@@ -54,10 +56,9 @@ function printMongooseValidationError(err) {
   return errmsg;
 }
 
-
 module.exports = {
   Movie,
   validateMovie,
   printMongooseValidationError,
-  movieSchema
+  movieSchema,
 };

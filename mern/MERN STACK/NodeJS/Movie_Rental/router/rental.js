@@ -36,9 +36,7 @@ router.post("/", async (req, res) => {
   try {
     let { error } = validateRental(req.body);
     if (error) {
-      console.log("joi error");
-      //   res.status(400).send(error.details[0].message);
-      console.log(err);
+      res.status(400).send(error.details[0].message);
       return;
     }
 
