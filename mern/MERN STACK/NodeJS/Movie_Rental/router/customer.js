@@ -13,7 +13,7 @@ const {
 router.get("/", async (req, res) => {
   try {
     const customers = await Customer.find({});
-    if (!customers) {
+    if (customers.length==0) {
       res.status(400).send("customers not in database...");
       return;
     }
@@ -45,7 +45,6 @@ router.post("/", async (req, res) => {
     }
     const customer = new Customer({
       name: req.body.name,
-      category: req.body.category,
       phone: req.body.phone,
       isGold: req.body.isGold,
     });
@@ -76,7 +75,6 @@ router.put("/:id", async (req, res) => {
       {
         $set: {
           name: req.body.name,
-          category: req.body.category,
           phone: req.body.phone,
           isGold: req.body.isGold,
         },

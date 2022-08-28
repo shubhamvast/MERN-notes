@@ -11,7 +11,7 @@ const {
 router.get("/", async (req, res) => {
   try {
     const movies = await Movie.find({});
-    if (!movies) return res.status(400).send("movies not in database...");
+    if (movies.length==0) return res.status(400).send("movies not in database...");
     res.status(200).send(movies);
   } catch (err) {
     res.status(400).send(err);

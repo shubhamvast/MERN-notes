@@ -1,4 +1,6 @@
 {
   "password": "password-of-phone",
-  "url": "data-base-url"
+  "url": "data-base-url",
+  "guser":"Guser",
+  "gpass":"Gpass"
 }

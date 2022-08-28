@@ -32,6 +32,10 @@ app.use("/api/rentals/", rentalRouter);
 const userRouter = require("./router/user");
 app.use("/api/users/", userRouter);
 
+//import login router
+const loginRouter = require("./router/logins");
+app.use("/api/logins/", loginRouter);
+
 //TO set PORT enviornmental variable
 //so we can set PORT dynamically
 require("dotenv").config();
