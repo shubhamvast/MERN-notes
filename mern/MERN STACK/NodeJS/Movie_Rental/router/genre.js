@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 router.use(express.json());
 
+const auth = require("../middlerware/authMiddlerware");
+const admin = require("../middlerware/adminMiddlerware");
+const validateObjectId = require("../middlerware/validateObjectIdMiddleware");
+
 //imported from models/genreModel.js
 const {
   Genre,
@@ -28,7 +32,7 @@ router.get("/", async (req, res) => {
 });
 
 //read specific item
-router.get("/:id", async (req, res) => {
+router.get("/:id", validateObjectId, async (req, res) => {
   try {
     const genre = await Genre.findById(req.params.id);
 
@@ -43,7 +47,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //create
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   try {
     let { error } = validateGenre(req.body);
     if (error) {
@@ -61,14 +65,15 @@ router.post("/", async (req, res) => {
     if (errmsg) res.status(400).send(errmsg);
     else {
       console.log(err);
-      res.status(400).send("internal error other than mongoose validation check console..");
+      res
+        .status(400)
+        .send("internal error other than mongoose validation check console..");
     }
-
   }
 });
 
 //update
-router.put("/:id", async (req, res) => {
+router.put("/:id", validateObjectId, auth, async (req, res) => {
   try {
     let { error } = validateGenre(req.body);
     if (error) {
@@ -93,23 +98,24 @@ router.put("/:id", async (req, res) => {
     if (errmsg) res.status(400).send(errmsg);
     else {
       console.log(err);
-      res.status(400).send("internal error other than mongoose validation check console..");
+      res
+        .status(400)
+        .send("internal error other than mongoose validation check console..");
     }
-
   }
 });
 //delete specific item
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", validateObjectId, auth, admin, async (req, res) => {
   try {
     const genre = await Genre.findById(req.params.id);
-     await Genre.deleteOne({ _id: req.params.id });
-     if (!genre) {
+    await Genre.deleteOne({ _id: req.params.id });
+    if (!genre) {
       res.status(404).send("Movie not found with specific to delete....");
       return;
     }
     res.status(200).send(genre);
   } catch (err) {
-    res.status(400).send(err)
+    res.status(400).send(err);
   }
 });
 

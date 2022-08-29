@@ -2,5 +2,6 @@
   "password": "password-of-phone",
   "url": "data-base-url",
   "guser":"Guser",
-  "gpass":"Gpass"
+  "gpass":"Gpass",
+  "jwtPrivateKey":"movie_rental_jwtPrivateKey"
 }

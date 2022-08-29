@@ -11,7 +11,7 @@ const {
 
 router.get("/", async (req, res) => {
   try {
-    const users = await User.find({});
+    const users = await User.find({},{name:1,email:1,isAdmin:1});
     if (users.length== 0) return res.status(400).send("users not in database...");
     res.status(200).send(users);
   } catch (err) {
@@ -21,10 +21,10 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+  const user = await User.findById(req.params.id);
     if (!user)
       return res.status(400).send("user not in database with specific id...");
-    res.status(200).send(user);
+    res.status(200).send(lodash.pick(user,["name","_id","isAdmin","email"]));
   } catch (err) {
     res.status(400).send(err);
   }
@@ -90,8 +90,6 @@ router.put("/:id", async (req, res) => {
           name: req.body.name,
           email: req.body.email,
           password: encryptedPassword,
-          // password: req.body.password,
-
           isAdmin: req.body.isAdmin,
         },
       },

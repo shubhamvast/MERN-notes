@@ -2,6 +2,11 @@ const express = require("express");
 const router = express.Router();
 router.use(express.json());
 
+const auth = require("../middlerware/authMiddlerware")
+const admin = require("../middlerware/adminMiddlerware")
+const validateObjectId = require("../middlerware/validateObjectIdMiddleware");
+
+
 const {
   Rental,
   validateRental,
@@ -20,7 +25,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id",validateObjectId, async (req, res) => {
   try {
     const rental = await Rental.findById(req.params.id);
     if (!rental)
@@ -108,7 +113,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.patch("/:id", async (req, res) => {
+router.patch("/:id",validateObjectId,auth, async (req, res) => {
   try {
     let rental = await Rental.findById(req.params.id);
     // return res.send(rental)
@@ -163,7 +168,7 @@ router.patch("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",validateObjectId,auth,admin,async (req, res) => {
   try {
     const rental = await Rental.findById(req.params.id);
 

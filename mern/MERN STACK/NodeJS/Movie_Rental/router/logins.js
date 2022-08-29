@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 router.use(express.json());
 const bcrypt = require("bcrypt");
-const {User}=require("../models/userModel");
+const {User, userSchema}=require("../models/userModel");
 const {sendMail} = require("../mail/sendEmail");
+
 router.post("/",async(req,res)=>{
     const {error} = validateLoginDetails(req.body);
     if(error) return res.status(400).send(error.details[0].message);
@@ -18,10 +19,12 @@ router.post("/",async(req,res)=>{
       res.status(400).send("Invalid User and Password!");
       return;
     }
-    sendMail(req.body.email,"Login on movie rental app...","Logged in successfully...");
-    res.status(200).send(isvalid);
+  sendMail(req.body.email,"Login on movie rental app...","Logged in successfully...");
+   const token = user.getAuthToken();
+    res.status(200).send(token);
 
 });
+
 
 
 const Joi = require("joi");

@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 router.use(express.json());
 
+const auth = require("../middlerware/authMiddlerware")
+const admin = require("../middlerware/adminMiddlerware")
+const validateObjectId = require("../middlerware/validateObjectIdMiddleware");
+
 const {
   Movie,
   validateMovie,
@@ -18,7 +22,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id",validateObjectId, async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
     if (!movie)
@@ -30,7 +34,7 @@ router.get("/:id", async (req, res) => {
 });
 
 const { Genre } = require("../models/genreModel");
-router.post("/", async (req, res) => {
+router.post("/",auth, async (req, res) => {
   try {
     let { error } = validateMovie(req.body);
     if (error) {
@@ -65,7 +69,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id",validateObjectId,auth, async (req, res) => {
   try {
     let { error } = validateMovie(req.body);
     if (error) {
@@ -101,7 +105,7 @@ router.put("/:id", async (req, res) => {
     }
   }
 });
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",validateObjectId,auth,admin, async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
     const result = await Movie.findByIdAndDelete(req.params.id);

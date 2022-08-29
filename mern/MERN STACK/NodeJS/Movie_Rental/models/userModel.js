@@ -25,9 +25,19 @@ const userSchema = mongoose.Schema({
   },
 });
 
+const jwt = require('jsonwebtoken');
+const config = require("config");
+
+userSchema.methods.getAuthToken = function(){
+    
+  return jwt.sign({_id:this._id,isAdmin:this.isAdmin},config.get("jwtPrivateKey"));
+
+}
+
 const User = mongoose.model("user", userSchema);
 
 const Joi = require("joi");
+const { JsonWebTokenError } = require("jsonwebtoken");
 function validateUser(user) {
   const joiSchema = Joi.object({
     name: Joi.string().min(5).max(50).required(),
